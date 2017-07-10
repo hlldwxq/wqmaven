@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">    
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>BigProject</groupId>
+  <artifactId>SmallProject</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>SmallProject</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+  
+    <!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>4.1.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.1.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+    
+  </dependencies>
+  <build>  
+        <finalName>springmvc_demo</finalName>  
+  
+        <plugins>  
+            <!-- Run the JUnit unit tests in an isolated classloader -->  
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-surefire-plugin</artifactId>  
+                <version>2.4.2</version>  
+                <configuration>  
+                    <skipTests>true</skipTests>  
+                </configuration>  
+            </plugin>  
+  
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-war-plugin</artifactId>  
+                <version>2.3</version>  
+                <configuration>  
+                    <webXml>src/main/webapp/WEB-INF/web.xml</webXml>  
+                </configuration>  
+            </plugin>  
+  
+            <!-- generate java doc -->  
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-javadoc-plugin</artifactId>  
+                <version>2.9.1</version>  
+                <configuration>  
+                    <javadocDirectory>target/javadoc</javadocDirectory>  
+                    <reportOutputDirectory>target/javadoc</reportOutputDirectory>  
+                    <charset>UTF-8</charset>  
+                    <encoding>UTF-8</encoding>  
+                    <docencoding>UTF-8</docencoding>  
+                    <show>private</show>  
+                </configuration>  
+            </plugin>  
+  
+            <!-- 部署至本机 -->  
+            <plugin>  
+                <groupId>org.codehaus.cargo</groupId>  
+                <artifactId>cargo-maven2-plugin</artifactId>  
+                <version>1.0</version>  
+                <configuration>  
+                    <container>  
+                        <containerId>Tomcat 7.0</containerId>  
+                        <home>D:\Tomcat 7.0</home>  
+                    </container>  
+                    <configuration>  
+                        <type>existing</type>  
+                        <home>D:\Tomcat 7.0</home>  
+                    </configuration>  
+                </configuration>  
+            </plugin>  
+        </plugins>  
+    </build>  
+</project>
